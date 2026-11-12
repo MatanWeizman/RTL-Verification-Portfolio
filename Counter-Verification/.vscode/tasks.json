@@ -1,0 +1,60 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile SystemVerilog",
+            "type": "shell",
+            "command": "iverilog",
+            "args": [
+                "-g2012",
+                "-s",
+                "tb_counter",
+                "-o",
+                "simulation/sim.vvp",
+                "rtl/counter.sv",
+                "testbench/tb_counter.sv"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Simulation",
+            "type": "shell",
+            "command": "vvp",
+            "args": [
+                "simulation/sim.vvp"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Open GTKWave",
+            "type": "shell",
+            "command": "gtkwave",
+            "args": [
+                "simulation/wave.vcd"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile and Run",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Compile SystemVerilog",
+                "Run Simulation",
+                "Open GTKWave"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
