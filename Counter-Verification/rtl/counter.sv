@@ -1,5 +1,5 @@
 module counter #(
-    parameter integer WIDTH = 4
+    parameter int unsigned WIDTH = 4
 ) (
     input  logic clk,
     input  logic reset,
